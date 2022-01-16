@@ -1,3 +1,3 @@
 
 # Test that server is running
-GET http://127.0.0.1:3000/ HTTP/1.1
+GET http://127.0.0.1:3000/tvl HTTP/1.1
