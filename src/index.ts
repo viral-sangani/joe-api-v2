@@ -4,7 +4,6 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
-import { powered } from "./middleware/powered";
 import { rt } from "./middleware/rt";
 import router from "./router";
 
@@ -15,7 +14,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
 app.use(rt);
-app.use(powered);
 
 app.use(router);
 

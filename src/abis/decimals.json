@@ -1,0 +1,13 @@
+{
+  "type": "function",
+  "stateMutability": "view",
+  "outputs": [
+    {
+      "type": "uint8",
+      "name": "",
+      "internalType": "uint8"
+    }
+  ],
+  "name": "decimals",
+  "inputs": []
+}
