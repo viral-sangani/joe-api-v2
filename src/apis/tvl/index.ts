@@ -1,5 +1,3 @@
-import { BigNumber } from "@ethersproject/bignumber";
-import { utils } from "ethers";
 import { Request, Response } from "express";
 import { performance } from "perf_hooks";
 import { JOEFACTORY_ADDRESS } from "../../utils/constants";
@@ -27,13 +25,6 @@ export const tvl = async (req: Request, res: Response) => {
   console.log("Started at - ", Date.now());
   const start = performance.now();
   let balance: Balances = await sumChainTvls([swapTvl])(JOEFACTORY_ADDRESS);
-
-  var acc: BigNumber = BigNumber.from("0");
-  Object.entries(balance).map((item) => {
-    acc = acc.add(BigNumber.from(item[1]));
-  });
-  console.log(`acc`, acc.toString());
-  console.log("formatted >> ", utils.formatEther(acc.toString()));
   const end = performance.now();
   console.log(`swapTvl took ${(end - start).toFixed(2)} milliseconds.`);
 

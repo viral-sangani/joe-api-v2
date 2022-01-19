@@ -21,7 +21,7 @@ export const tvlPair = async (req: Request, res: Response) => {
   const start = performance.now();
   let balance: Balances = await sumChainTvls([swapTvl])(req.params.pair);
   const end = performance.now();
-  let tokens;
+
   const [symbols, decimals, names] = await Promise.all([
     multiCall({
       abi: symbol,
