@@ -20,9 +20,11 @@
     "bn.js": "^5.2.0",
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",
+    "ethers": "^5.5.3",
     "express": "^4.17.2",
     "helmet": "^5.0.1",
     "lodash": "^4.17.21",
+    "node-cache": "^5.1.2",
     "perf_hooks": "^0.0.1",
     "web3": "^1.6.1"
   },

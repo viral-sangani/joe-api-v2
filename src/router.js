@@ -1,10 +1,10 @@
 import express from "express";
-import { tvl } from "./apis/tvl";
 import { tvlPair } from "./apis/tvlPair";
+import { tvl } from "./apis/tvlPairs";
 
 const router = express.Router();
 
-router.get("/tvl/:pair", tvlPair);
-router.get("/tvl", tvl);
+router.get("/tvl/pairs/:pair", tvlPair);
+router.get("/tvl/pairs/", tvl);
 
 export default router;
