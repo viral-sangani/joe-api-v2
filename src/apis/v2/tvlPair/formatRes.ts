@@ -1,5 +1,5 @@
 import { utils } from "ethers";
-import { Balances } from "./../../utils/sumChainsTvl";
+import { Balances } from "../../../utils/sumChainsTvl";
 
 const formattedReserve = (token: any) => {
   {

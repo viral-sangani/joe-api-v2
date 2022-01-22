@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { performance } from "perf_hooks";
-import { transformAvaxAddress } from "../../utils/helper";
+import { transformAvaxAddress } from "../../../utils/helper";
 import { calculatePairTvl } from "./calcPairTvl";
 
 async function swapTvl(address: string) {

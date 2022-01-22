@@ -22,10 +22,14 @@
     "cors": "^2.8.5",
     "ethers": "^5.5.3",
     "express": "^4.17.2",
+    "graphql": "^16.2.0",
+    "graphql-request": "^3.7.0",
     "helmet": "^5.0.1",
     "lodash": "^4.17.21",
     "node-cache": "^5.1.2",
     "perf_hooks": "^0.0.1",
+    "requery": "^0.0.5",
+    "underscore": "^1.13.2",
     "web3": "^1.6.1"
   },
   "devDependencies": {

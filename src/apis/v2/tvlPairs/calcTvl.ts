@@ -1,12 +1,12 @@
 import BigNumber from "bignumber.js";
-import { cache } from "../..";
-import decimals from "../../abis/decimals.json";
-import factoryAbi from "../../abis/factory.json";
-import getReserves from "../../abis/getReserves.json";
-import symbol from "../../abis/symbol.json";
-import token0 from "../../abis/token0.json";
-import token1 from "../../abis/token1.json";
-import { multiCall } from "../../sdk";
+import { cache } from "../../..";
+import decimals from "../../../abis/decimals.json";
+import factoryAbi from "../../../abis/factory.json";
+import getReserves from "../../../abis/getReserves.json";
+import symbol from "../../../abis/symbol.json";
+import token0 from "../../../abis/token0.json";
+import token1 from "../../../abis/token1.json";
+import { multiCall } from "../../../sdk";
 
 export async function calculateUniTvl(
   getAddress: (addr: string) => string,

@@ -1,12 +1,12 @@
 import BigNumber from "bignumber.js";
-import { cache } from "../..";
-import decimal from "../../abis/decimals.json";
-import getReserves from "../../abis/getReserves.json";
-import name from "../../abis/name.json";
-import symbol from "../../abis/symbol.json";
-import token0 from "../../abis/token0.json";
-import token1 from "../../abis/token1.json";
-import { multiCall } from "../../sdk";
+import { cache } from "../../..";
+import decimal from "../../../abis/decimals.json";
+import getReserves from "../../../abis/getReserves.json";
+import name from "../../../abis/name.json";
+import symbol from "../../../abis/symbol.json";
+import token0 from "../../../abis/token0.json";
+import token1 from "../../../abis/token1.json";
+import { multiCall } from "../../../sdk";
 
 export async function calculatePairTvl(
   getAddress: (addr: string) => string,
