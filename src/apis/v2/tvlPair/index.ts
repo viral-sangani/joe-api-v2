@@ -9,21 +9,11 @@ async function swapTvl(address: string) {
   return balances;
 }
 
-export const tvlPair = async (req: Request, res: Response) => {
-  const trans = await transformAvaxAddress();
+export const getTvlPair = async (req: Request, res: Response) => {
   const start = performance.now();
   const { pair } = req.params;
   let pairRes: any = await swapTvl(pair);
   const end = performance.now();
-
-  // const { resObj } = await formatPairRes(
-  //   trans,
-  //   balance,
-  //   symbols,
-  //   decimals,
-  //   names,
-  //   pair
-  // );
   console.log({ time: (end - start).toFixed(2) });
 
   res.send(pairRes);

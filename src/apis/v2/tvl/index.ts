@@ -2,13 +2,13 @@ import { BigNumber, utils } from "ethers";
 import { Request, Response } from "express";
 import { JOE_BAR, JOE_TOKEN } from "../../../utils/constants";
 import { priceOfToken } from "../../v1/price";
+import { getRawLendingData } from "../lending/index";
 import { getChainVolume } from "./getSubgraphVolume";
-import { getTotalLendingData } from "./lending";
 import { staking } from "./staking";
 
-export const tvl = async (req: Request, res: Response) => {
+export const getTvl = async (req: Request, res: Response) => {
   // Handle Lending / Borrowing
-  const ledingData = await getTotalLendingData();
+  const ledingData = await getRawLendingData();
 
   // Handle Staking
   const stakingTvl: any = await staking(JOE_BAR, JOE_TOKEN);
@@ -27,20 +27,20 @@ export const tvl = async (req: Request, res: Response) => {
   let stakingUSD = (
     parseFloat(formattedPrice) * parseFloat(formattedStakingTvl)
   ).toFixed(2);
-  let depositedUSD = parseFloat(
-    utils.formatUnits(BigNumber.from(ledingData.totalDeposited), 18)
-  ).toFixed(2);
+  let lendingSupplyUSD = parseFloat(ledingData?.totalSupplyUSD ?? "0").toFixed(
+    2
+  );
 
   res.send({
     tvl: {
       liquidityUSD,
       stakingUSD,
-      depositedUSD,
+      lendingSupplyUSD,
     },
     totalTvl: (
       parseFloat(liquidityUSD) +
       parseFloat(stakingUSD) +
-      parseFloat(depositedUSD)
+      parseFloat(ledingData?.totalSupplyUSD ?? "0")
     ).toFixed(2),
   });
 };

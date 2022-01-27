@@ -1,5 +1,6 @@
 import { gql, request } from "graphql-request";
 import { cache } from "../../..";
+import { TRADER_JOE_GRAPH_EXCHANGE } from "../../../utils/constants";
 
 export const getUniqStartOfTodayTimestamp = (date = new Date()) => {
   var date_utc = Date.UTC(
@@ -48,8 +49,7 @@ export const getChainVolume = async (): Promise<{
   ${dailyVolumeQuery}
 }
 `;
-    const graphUrl =
-      "https://api.thegraph.com/subgraphs/name/traderjoe-xyz/exchange";
+    const graphUrl = TRADER_JOE_GRAPH_EXCHANGE;
 
     const id = getUniswapDateId();
     const graphRes = await request(graphUrl, graphQuery, {

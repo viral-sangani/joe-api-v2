@@ -253,11 +253,10 @@ async function getPairAddress(tokenAddress) {
 
 async function logics(ctx, derived) {
   let tokenAddress;
-
   if (!("tokenAddress" in ctx.params)) ctx.body = "";
   else {
     try {
-      if (ctx.params.tokenAddress.toLowerCase() in tokenList) {
+      if (ctx.params.tokenAddress in tokenList) {
         tokenAddress = tokenList[ctx.params.tokenAddress];
       } else {
         tokenAddress = web3.utils.toChecksumAddress(ctx.params.tokenAddress);
@@ -270,6 +269,7 @@ async function logics(ctx, derived) {
       var price = (await getPrice(tokenAddress, derived)).toString();
       return price;
     } catch (e: any) {
+      console.log(e);
       ctx.body = e.toString();
     }
   }
