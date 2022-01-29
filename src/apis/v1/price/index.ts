@@ -1,4 +1,5 @@
 import BN from "bn.js";
+import { Request, Response } from "express";
 import { AbiItem } from "web3-utils";
 import ERC20ContractABI from "../../../abis/ERC20ContractABI.json";
 import JoeBarContractABI from "../../../abis/JoeBarContractABI.json";
@@ -251,36 +252,43 @@ async function getPairAddress(tokenAddress) {
     : undefined;
 }
 
-async function logics(ctx, derived) {
+async function logics(req: Request, res: Response, derived) {
   let tokenAddress;
-  if (!("tokenAddress" in ctx.params)) ctx.body = "";
+  if (!("tokenAddress" in req.params)) res.send("");
   else {
     try {
-      if (ctx.params.tokenAddress in tokenList) {
-        tokenAddress = tokenList[ctx.params.tokenAddress];
+      if (req.params.tokenAddress in tokenList) {
+        tokenAddress = tokenList[req.params.tokenAddress];
       } else {
-        tokenAddress = web3.utils.toChecksumAddress(ctx.params.tokenAddress);
+        tokenAddress = web3.utils.toChecksumAddress(req.params.tokenAddress);
       }
       derived
         ? tokenAddress === WAVAX_ADDRESS
-          ? (ctx.body = BN_1E18.toString())
-          : (ctx.body = (await getPrice(tokenAddress, derived)).toString())
-        : (ctx.body = (await getPrice(tokenAddress, derived)).toString());
+          ? res.send(BN_1E18.toString())
+          : res.send(await getPrice(tokenAddress, derived)).toString()
+        : res.send(await getPrice(tokenAddress, derived)).toString();
       var price = (await getPrice(tokenAddress, derived)).toString();
       return price;
     } catch (e: any) {
       console.log(e);
-      ctx.body = e.toString();
+      res.send(e.toString());
     }
   }
 }
 
-export async function priceOfToken(ctx) {
-  return await logics(ctx, false);
+export function priceOfToken(req: Request, res: Response) {
+  console.log("req", req);
+  console.log("res", res);
+  return logics(req, res, false);
 }
 
-export async function derivedPriceOfToken(ctx) {
-  await logics(ctx, true);
+export async function getTokenPrice(tokenAddress) {
+  var result = (await getPrice(tokenAddress, true)).toString();
+  return result;
+}
+
+export function derivedPriceOfToken(req: Request, res: Response) {
+  return logics(req, res, true);
 }
 
 const cache = new Cache();
