@@ -6,7 +6,8 @@ import express from "express";
 import helmet from "helmet";
 import NodeCache from "node-cache";
 import { rt } from "./middleware/rt";
-import router from "./router";
+import routerV1 from "./routerV1";
+import routerV2 from "./routerV2";
 
 const app = express();
 
@@ -18,7 +19,8 @@ app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
 app.use(rt);
 
-app.use(router);
+app.use("/v1", routerV1);
+app.use("/v2", routerV2);
 
 const port = 3000;
 
