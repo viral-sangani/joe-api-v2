@@ -1,3 +1,11 @@
 
 # Test that server is running
 GET http://127.0.0.1:3000/tvl HTTP/1.1
+
+###
+POST http://127.0.0.1:3000/tvl/pair HTTP/1.1
+content-type: application/json
+
+{
+  "pairAddress": "0xa389f9430876455c36478deea9769b7ca4e3ddb1"
+}
