@@ -3,10 +3,16 @@ import { gql } from "graphql-request";
 export const pairsQuery = gql`
   query pairsQuery(
     $first: Int!
+    $skip: Int!
     $orderBy: String! = "trackedReserveAVAX"
     $orderDirection: String! = "desc"
   ) {
-    pairs(first: $first, orderBy: $orderBy, orderDirection: $orderDirection) {
+    pairs(
+      first: $first
+      skip: $skip
+      orderBy: $orderBy
+      orderDirection: $orderDirection
+    ) {
       id
       reserveUSD
       reserveAVAX

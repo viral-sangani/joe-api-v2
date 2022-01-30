@@ -105,13 +105,6 @@ export async function calculatePairTvl(
       txCount: String(oneDayPair?.txCount),
     };
 
-    pairAddressData.twoDay = {
-      untrackedVolumeUSD: String(twoDayPair?.untrackedVolumeUSD),
-      volumeUSD: String(twoDayPair?.volumeUSD),
-      reserveUSD: String(twoDayPair?.reserveUSD),
-      txCount: String(twoDayPair?.txCount),
-    };
-
     pairAddressData.sevenDay = {
       untrackedVolumeUSD: String(sevenDayPair?.untrackedVolumeUSD),
       volumeUSD: String(sevenDayPair?.volumeUSD),
@@ -156,6 +149,13 @@ export async function calculatePairTvl(
     pairAddressData;
     pairData = pairAddressData;
   }
+
+  pairData.twoDay = {
+    untrackedVolumeUSD: String(twoDayPair?.untrackedVolumeUSD),
+    volumeUSD: String(twoDayPair?.volumeUSD),
+    reserveUSD: String(twoDayPair?.reserveUSD),
+    txCount: String(twoDayPair?.txCount),
+  };
 
   // Getting pair only data
 
