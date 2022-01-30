@@ -7,6 +7,11 @@ const TRADER_JOE_GRAPH_EXCHANGE =
   "https://api.thegraph.com/subgraphs/name/traderjoe-xyz/exchange";
 const TRADER_JOE_GRAPH_LENDING =
   "https://api.thegraph.com/subgraphs/name/traderjoe-xyz/lending";
+const TRADER_JOE_GRAPH_MASTERCHEF =
+  "https://api.thegraph.com/subgraphs/name/traderjoe-xyz/masterchefv2";
+const GRAPH_BLOCKS_URI =
+  "https://api.thegraph.com/subgraphs/name/dasconnor/avalanche-blocks";
+
 const AVAX_CHAIN_ID = 43114;
 
 // Number contants
@@ -26,6 +31,7 @@ const USDC_ADDRESS = "0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664";
 const USDT_ADDRESS = "0xc7198437980c041c805A1EDcbA50c1Ce5db95118";
 const WAVAX_USDT_ADDRESS = "0xeD8CBD9F0cE3C6986b22002F03c6475CEb7a6256";
 const WAVAX_USDC_ADDRESS = "0xA389f9430876455C36478DeEa9769B7Ca4E3DDB1";
+const MASTERCHEF_ADDRESS = "0xd6a4F121CA35509aF06A0Be99093d08462f53052";
 const TOTALSUPPLYANDBORROW_ADDRESS =
   "0x8E94d4C235bb07301A07956ddd50aa7f13be2b53";
 const secondsPerYear = "31536000";
@@ -76,6 +82,9 @@ export {
   ZERO_ADDRESS,
   TRADER_JOE_GRAPH_EXCHANGE,
   TRADER_JOE_GRAPH_LENDING,
+  TRADER_JOE_GRAPH_MASTERCHEF,
+  GRAPH_BLOCKS_URI,
+  MASTERCHEF_ADDRESS,
   secondsPerYear,
   jTokenDecimalsBD,
 };

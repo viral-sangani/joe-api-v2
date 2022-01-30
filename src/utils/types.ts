@@ -29,3 +29,62 @@ export interface LendingDataProp {
   totalReservesUSD: string;
   totalLiquidityUSD: string;
 }
+
+export interface Owner {
+  id: string;
+  joePerSec: string;
+  totalAllocPoint: string;
+}
+
+export interface Token0 {
+  derivedAVAX: string;
+  id: string;
+  name: string;
+  symbol: string;
+  totalSupply: string;
+}
+
+export interface Token1 {
+  derivedAVAX: string;
+  id: string;
+  name: string;
+  symbol: string;
+  totalSupply: string;
+}
+
+export interface LiquidityPair {
+  id: string;
+  reserve0: string;
+  reserve1: string;
+  reserveAVAX: string;
+  reserveUSD: string;
+  timestamp: string;
+  token0: Token0;
+  token0Price: string;
+  token1: Token1;
+  token1Price: string;
+  totalSupply: string;
+  trackedReserveAVAX: string;
+  txCount: string;
+  untrackedVolumeUSD: string;
+  volumeUSD: string;
+}
+
+export interface Pools {
+  accJoePerShare: string;
+  allocPoint: string;
+  balance: string;
+  id: string;
+  lastRewardTimestamp: string;
+  owner: Owner;
+  pair: string;
+  timestamp: string;
+  userCount: string;
+  liquidityPair: LiquidityPair;
+  rewardPerSec: number;
+  roiPerHour: number;
+  roiPerDay: number;
+  roiPerMonth: number;
+  roiPerYear: number;
+  tvl: string;
+}

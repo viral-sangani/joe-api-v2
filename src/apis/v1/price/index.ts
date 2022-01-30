@@ -277,13 +277,11 @@ async function logics(req: Request, res: Response, derived) {
 }
 
 export function priceOfToken(req: Request, res: Response) {
-  console.log("req", req);
-  console.log("res", res);
   return logics(req, res, false);
 }
 
 export async function getTokenPrice(tokenAddress) {
-  var result = (await getPrice(tokenAddress, true)).toString();
+  var result = (await getPrice(tokenAddress, false)).toString();
   return result;
 }
 
