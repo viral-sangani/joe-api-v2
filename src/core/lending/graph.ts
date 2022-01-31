@@ -36,7 +36,11 @@ const allMarketDayDatasQuery = gql`
   }
 `;
 
-export const fetchLendingGraphData = async () => {
+/**
+ * Fetches historical data for a lending from graph
+ * @returns {Promise<{liquidationDayDatas: any[], marketDayDatas: any[]}>}
+ */
+export const fetchLendingHistoricalData = async () => {
   let mergedLiquidationDayDatas: any = [];
   const { liquidationDayDatas } = await request(
     TRADER_JOE_GRAPH_LENDING,

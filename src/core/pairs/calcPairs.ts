@@ -8,11 +8,14 @@ import { cacheSinglePairTTL } from "../../utils/cacheConstants";
 import { TRADER_JOE_GRAPH_EXCHANGE } from "../../utils/constants";
 import { pairsQuery, pairsTimeTravelQuery } from "./query";
 
-export async function getAllPairsData(
-  chain: string,
-  first: number,
-  skip: number
-) {
+/**
+ * Fetches all the pair data from the graphql endpoint
+ * reserves are fetches in real time from the trader joe contract
+ *
+ * @param first
+ * @param skip
+ */
+export async function getAllPairsData(first: number, skip: number) {
   // const pairLength = (
   //   await call({
   //     target: FACTORY,
@@ -73,7 +76,6 @@ export async function getAllPairsData(
     const [reserves] = await Promise.all([
       multiCall({
         abi: getReserves,
-        chain,
         calls: dataToFetch.map((pairAddress) => ({
           target: pairAddress,
         })),

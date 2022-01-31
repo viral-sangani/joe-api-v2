@@ -18,6 +18,10 @@ import {
 
 const FEE_RATE = 0.0005; // 0.05%
 
+/**
+ * getStakeData returns the stake data for a joe token
+ * @returns {Promise<{liquidationDayDatas: any[], marketDayDatas: any[]}>}
+ */
 export const getStakeData = async (): Promise<StakeDataProp> => {
   const block = await getOneDayBlock();
   const [

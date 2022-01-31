@@ -1,3 +1,6 @@
+/**
+ * cache keys and ttl values declared globally for all the v2 APIs
+ */
 export const cacheStakeKey = "stakeData";
 export const cacheStakeTTL = 60 * 30;
 

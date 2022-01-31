@@ -20,28 +20,25 @@ const FARMS_BLACKLIST = [
   "36", // JOELDN
 ];
 
+/**
+ * Fetches all the pools from graph
+ * @returns {Promise<Pools[]>}
+ */
 export const getPoolsData = async () => {
   const { pools } = await request(TRADER_JOE_GRAPH_MASTERCHEF, poolsQuery);
 
-  const pairAddresses = pools
-    .map((pool) => {
-      return pool.pair;
-    })
-    .sort();
+  const pairAddresses = pools.map((pool: { pair: any }) => pool.pair).sort();
 
-  const { pairs } = await request(TRADER_JOE_GRAPH_EXCHANGE, pairSubsetQuery, {
-    pairAddresses,
-  });
-
-  const joePrice = await getTokenPrice(JOE_TOKEN);
-
-  const { liquidityPositions } = await request(
-    TRADER_JOE_GRAPH_EXCHANGE,
-    liquidityPositionSubsetQuery,
-    {
+  const [{ pairs }, joePrice, { liquidityPositions }] = await Promise.all([
+    request(TRADER_JOE_GRAPH_EXCHANGE, pairSubsetQuery, {
+      pairAddresses,
+    }),
+    getTokenPrice(JOE_TOKEN),
+    request(TRADER_JOE_GRAPH_EXCHANGE, liquidityPositionSubsetQuery, {
       user: MASTERCHEF_ADDRESS,
-    }
-  );
+    }),
+  ]);
+
   var data = pools
     .filter(
       (pool) =>

@@ -14,6 +14,9 @@ import {
 
 const router = express.Router();
 
+/**
+ * These are all the routes present in current joe-api.
+ */
 router.get("/supply/circulating", circulatingSupply);
 router.get("/supply/circulating-adjusted", circulatingSupplyAdjusted);
 router.get("/supply/total", totalSupply);

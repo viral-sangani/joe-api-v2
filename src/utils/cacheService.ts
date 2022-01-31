@@ -1,9 +1,14 @@
+/**
+ * Cache services make sure that the cache is updated when the ttl expires.
+ * The cache is updated by calling the corresponding methods and storing the response in the cache.
+ */
+
 import NodeCache from "node-cache";
 import { getRawLendingData } from "../apis/v2/lending";
 import { getPoolCachedData } from "../apis/v2/pools";
 import { getStake } from "../apis/v2/stake";
-import { getChainVolume } from "../apis/v2/tvl/getSubgraphVolume";
-import { staking } from "../apis/v2/tvl/staking";
+import { getChainVolume } from "../core/tvl/graph";
+import { staking } from "../core/tvl/staking";
 import {
   cacheLendingDataKey,
   cachePoolDataKey,

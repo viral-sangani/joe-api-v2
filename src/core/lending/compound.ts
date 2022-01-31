@@ -11,7 +11,11 @@ import { call, multiCall } from "../../sdk";
 import { jTokenDecimalsBD, secondsPerYear } from "../../utils/constants";
 import { LendingDataProp } from "../../utils/types";
 
-async function getAllCTokens(comptroller: any) {
+/**
+ * fetche all the jToken available on trader joe
+ * @param comptroller JOE_COMTROLLER address
+ */
+export async function getAllCTokens(comptroller: any) {
   return (
     await call({
       target: comptroller,
@@ -21,9 +25,14 @@ async function getAllCTokens(comptroller: any) {
   ).output;
 }
 
+/**
+ * fetches all the markets and the relevant data from comptroller contract
+ * @param comptroller JOE_COMTROLLER address
+ */
 async function getMarkets(comptroller: any) {
   let allJTokens = await getAllCTokens(comptroller);
   let oracle = await getOracle(comptroller, abi["oracle"]);
+
   const [
     underlying,
     totalSupply,
@@ -137,7 +146,7 @@ async function getMarkets(comptroller: any) {
     );
     obj.underlyingSymbol = underlyingSymbol.output[index].output;
     obj.exchangeRate = utils.formatUnits(
-      BigNumber.from(exchangeRateStored.output[index].output),
+      BigNumber.from(exchangeRateStored?.output[index]?.output ?? "0"),
       18 - 8 + parseInt(obj.underlyingDecimal)
     );
     obj.cash = utils.formatUnits(
@@ -201,6 +210,7 @@ export const getCompoundV2Tvl = async (
   let ctokenObj = await getMarkets(comptroller);
   return ctokenObj;
 };
+
 // ask comptroller for oracle
 async function getOracle(
   comptroller: any,

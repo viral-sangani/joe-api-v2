@@ -19,11 +19,14 @@ import {
   transactionsQuery,
 } from "./query";
 
-export async function calculatePairTvl(
-  chain: string,
-  pairAddress: string,
-  pairData?: any
-) {
+/**
+ * fetches detailed data for a particular pair
+ *
+ * @param pairAddress
+ * @param pairData pairData if already fetched by getAllPairsData
+ * @returns
+ */
+export async function calculatePairData(pairAddress: string, pairData?: any) {
   if (pairData == undefined) {
     let pairAddressData: any = {};
     var data = await request(TRADER_JOE_GRAPH_EXCHANGE, pairQuery, {
@@ -62,7 +65,6 @@ export async function calculatePairTvl(
     const [reserves] = await Promise.all([
       multiCall({
         abi: getReserves,
-        chain,
         calls: [{ target: pairAddress }],
         requery: true,
       }).then(({ output }) => output),
@@ -158,7 +160,6 @@ export async function calculatePairTvl(
   };
 
   // Getting pair only data
-
   var { pairDayDatas } = await request(
     TRADER_JOE_GRAPH_EXCHANGE,
     pairDayDatasQuery,
@@ -251,9 +252,6 @@ export async function calculatePairTvl(
     },
     { liquidity: [], volume: [] }
   );
-
-  // console.log("pairDayData", pairDayData);
-  // console.log("transactionsQueryData", transactionsQueryData);
 
   var transactionData = [
     ...transactionsQueryData.swaps,
