@@ -60,7 +60,7 @@
 This is a project submission for Morlist + Avalanche Hackathon. Task was to create a set of APIs to calculate APY, APR and TVL for Trader Joe's Platform. The `joe-api-v2` has following features -
 
 - Versioning support, currently has v1 and v2 API paths.
-- Backwards compatible with [joe-api](https://github.com/traderjoe-xyz/joe-api). All the `joe-api` APIs are available at `https://joe-api-v2.herokuapp.com/v1`.
+- Backwards compatible with [joe-api](https://github.com/traderjoe-xyz/joe-api). All the `joe-api` APIs are available at `https://joe-api-v2.herokuapp.com/v1/`.
 - All the new APIs are available at - `https://joe-api-v2.herokuapp.com/v2/`.
 - Awesome API documentation available here - [Postman Documentation](https://documenter.getpostman.com/view/13371978/UVeDs7Pt)
 - Always returns a json object in response.
@@ -152,7 +152,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Viral Sangani - [@viral_sangani)](https://twitter.com/viral_sangani_) - viral.sangani2011@gmail.com
+Viral Sangani - [@viral_sangani](https://twitter.com/viral_sangani_) - viral.sangani2011@gmail.com
 
 Project Link: [https://github.com/viral-sangani/joe-api-v2](https://github.com/viral-sangani/joe-api-v2)
 
@@ -183,7 +183,7 @@ List of resources I find helpful and would like to give credit to.
 [issues-shield]: https://img.shields.io/github/issues/viral-sangani/joe-api-v2.svg?style=for-the-badge
 [issues-url]: https://github.com/viral-sangani/joe-api-v2/issues
 [license-shield]: https://img.shields.io/github/license/viral-sangani/joe-api-v2.svg?style=for-the-badge
-[license-url]: https://github.com/viral-sangani/joe-api-v2/blob/master/LICENSE.txt
+[license-url]: https://github.com/viral-sangani/joe-api-v2/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/viral-sangani/
 [product-screenshot]: images/product-image.png
