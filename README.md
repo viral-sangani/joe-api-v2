@@ -57,18 +57,20 @@
 
 [![Poster Image][product-screenshot]](https://joe-api-v2.herokuapp.com/)
 
-This is a project submission for Morlist + Avalanche Hackathon. Task was to create a set of APIs to calculate APY, APR and TVL for Trader Joe's Platform. The `joe-api-v2` has following features -
+This is a project submission for Moralis + Avalanche Hackathon. The task was to create a set of APIs to calculate APY, APR ,and TVL for Trader Joe's Platform. The joe-api-v2 has following features -
 
-- Versioning support, currently has v1 and v2 API paths.
-- Backwards compatible with [joe-api](https://github.com/traderjoe-xyz/joe-api). All the `joe-api` APIs are available at `https://joe-api-v2.herokuapp.com/v1/`.
-- All the new APIs are available at - `https://joe-api-v2.herokuapp.com/v2/`.
-- Awesome API documentation available here - [Postman Documentation](https://documenter.getpostman.com/view/13371978/UVeDs7Pt)
+- Versioning support currently has v1 and v2 API paths.
+- Backward compatible with joe-api. All the joe-api APIs are available at https://joe-api-v2.herokuapp.com/v1/.
+- All the new APIs are available at - https://joe-api-v2.herokuapp.com/v2/.
+- Awesome API documentation available here - Postman Documentation
 - Always returns a json object in response.
-- Have rate limiting configuration. Each user/IP can make 1000 API call in 15 mins.
-- Implemented caching to provide blazing fast response.
-- Cache is auto updated once the data is expired by timely jobs.
-- Build with typescript for better developer experience.
-- Has great loggin feature to debug the production app.
+- Have rate limiting configuration. Each user/IP can make 1000 API calls in 15 mins.
+- Implemented caching to provide a blazing-fast response.
+- The cache is auto-updated once the data is expired by timely jobs.
+- Build with typescript for a better developer experience.
+- Has a great logging feature to debug the production app.
+
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
