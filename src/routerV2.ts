@@ -28,7 +28,7 @@ router.get("/stake", getStake);
 
 /**
  * /pairs returns the list of pairs and all the data related to them
- * including tokens, reserves, one day volume, seven day volume, fees, APR, etd.
+ * including tokens, reserves, one day volume, seven day volume, fees, APR, et.
  *
  * /pairs/:pairId returns the data related to a single pair along with some extra data like
  * historical liquidity data, historical volume data, tx count, recent transactions, etc.

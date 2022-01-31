@@ -71,7 +71,7 @@ export async function calculatePairData(pairAddress: string, pairData?: any) {
     ]);
 
     let pair = data.pair;
-
+    console.log("data.pair", data.pair);
     pairAddressData.pairAddress = pairAddress;
     pairAddressData.token0 = {
       address: pair.token0.id,
@@ -89,7 +89,7 @@ export async function calculatePairData(pairAddress: string, pairData?: any) {
     };
 
     pairAddressData.reserveUSD = pair.reserveUSD;
-
+    pairAddressData.txCount = pair.txCount;
     // handle reserve0
     pairAddressData.reserve0 = utils.formatUnits(
       BigNumber.from(reserves[0].output["0"]),
@@ -116,6 +116,7 @@ export async function calculatePairData(pairAddress: string, pairData?: any) {
 
     const volumeUSD =
       pair?.volumeUSD === "0" ? pair?.untrackedVolumeUSD : pair?.volumeUSD;
+    pairAddressData.volumeUSD = String(volumeUSD);
 
     const oneDayVolumeUSD =
       pairAddressData.oneDay?.volumeUSD === "0"
@@ -277,7 +278,6 @@ export async function calculatePairData(pairAddress: string, pairData?: any) {
 
   return {
     ...pairData,
-    chartDatas,
     fees,
     feesYesterday,
 
@@ -301,5 +301,6 @@ export async function calculatePairData(pairAddress: string, pairData?: any) {
     oneDayVolumeUSD,
     twoDayVolumeUSD,
     transactionData,
+    chartDatas,
   };
 }
