@@ -145,3 +145,41 @@ export interface StakeDataProp {
   apy: Apy[];
   fees: Fee[];
 }
+
+export interface OneDay {
+  volumeUSD: string;
+  derivedAVAX: string;
+  liquidity: string;
+}
+
+export interface SevenDay {
+  volumeUSD: string;
+  derivedAVAX: string;
+  liquidity: string;
+}
+
+export interface TokensProps {
+  decimals: string;
+  derivedAVAX: string;
+  id: string;
+  liquidity: string;
+  name: string;
+  symbol: string;
+  totalSupply: string;
+  txCount: string;
+  untrackedVolumeUSD: string;
+  volume: string;
+  volumeUSD: string;
+  oneDay: OneDay;
+  sevenDay: SevenDay;
+}
+
+export interface TokenDetails {
+  price: number;
+  priceYesterday: number;
+  priceChange: number;
+  priceLastWeek: number;
+  sevenDayPriceChange: number;
+  liquidityUSD: number;
+  volumeYesterday: number;
+}

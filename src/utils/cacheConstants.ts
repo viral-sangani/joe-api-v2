@@ -16,4 +16,7 @@ export const cacheTvlLiquidityTTL = 60 * 30;
 export const cacheStakingTvlKey = "stakingTvl";
 export const cacheStakingTvlTTL = 60 * 30;
 
+export const cacheTokensKey = "tokens";
+export const cacheTokensTTL = 60 * 30;
+
 export const cacheSinglePairTTL = 60 * 30;

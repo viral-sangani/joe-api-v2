@@ -71,7 +71,6 @@ export async function calculatePairData(pairAddress: string, pairData?: any) {
     ]);
 
     let pair = data.pair;
-    console.log("data.pair", data.pair);
     pairAddressData.pairAddress = pairAddress;
     pairAddressData.token0 = {
       address: pair.token0.id,

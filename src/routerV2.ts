@@ -4,6 +4,7 @@ import { getPairs, getSinglePair } from "./apis/v2/pairs";
 import { getPools } from "./apis/v2/pools";
 import { getSinglePool } from "./apis/v2/pools/index";
 import { getStake } from "./apis/v2/stake";
+import { getSingleToken, getTokens } from "./apis/v2/tokens";
 import { getTvl } from "./apis/v2/tvl";
 
 const router = express.Router();
@@ -57,5 +58,13 @@ router.get("/lending", getLendingData);
  */
 router.get("/pool/:id", getSinglePool);
 router.get("/pool", getPools);
+
+/**
+ * /tokens returns list of all the tokens available in the protocol along with one day and seven day volumes
+ *
+ * /tokens/:id returns the data related to a single token along with price, yesterday price, price change, last week price, liquidity, etc. and volume
+ */
+router.get("/tokens/:id", getSingleToken);
+router.get("/tokens", getTokens);
 
 export default router;
