@@ -88,3 +88,60 @@ export interface Pools {
   roiPerYear: number;
   tvl: string;
 }
+
+export interface JoeStakedUSD {
+  date: any;
+  value: number;
+}
+
+export interface JoeHarvestedUSD {
+  date: any;
+  value: number;
+}
+
+export interface XJoeMinted {
+  date: any;
+  value: number;
+}
+
+export interface XJoeBurned {
+  date: any;
+  value: number;
+}
+
+export interface XJoe {
+  date: any;
+  value: number;
+}
+
+export interface Apr {
+  date: any;
+  value: number;
+}
+
+export interface Apy {
+  date: any;
+  value: number;
+}
+
+export interface Fee {
+  date: any;
+  value: number;
+}
+
+export interface StakeDataProp {
+  averageApy: number;
+  oneDayVolume: number;
+  oneDayFees: number;
+  totalStakedUSD: number;
+  totalApr: number;
+  totalApy: number;
+  joeStakedUSD: JoeStakedUSD[];
+  joeHarvestedUSD: JoeHarvestedUSD[];
+  xJoeMinted: XJoeMinted[];
+  xJoeBurned: XJoeBurned[];
+  xJoe: XJoe[];
+  apr: Apr[];
+  apy: Apy[];
+  fees: Fee[];
+}

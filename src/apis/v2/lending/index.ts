@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import { cache } from "../../..";
 import { getCompoundV2Tvl } from "../../../core/lending/compound";
+import { cacheLendingDataKey } from "../../../utils/cacheConstants";
 import { JOE_COMPTROLLER } from "../../../utils/constants";
-import { fetchLendingGraphData } from "./../../../core/lending/graph";
+import { cacheLendingDataTTL } from "./../../../utils/cacheConstants";
 import { LendingDataProp } from "./../../../utils/types";
 
 export const getLendingPairData = async (req: Request, res: Response) => {
@@ -16,17 +17,22 @@ export const getLendingPairData = async (req: Request, res: Response) => {
 
 export const getLendingData = async (req: Request, res: Response) => {
   let allLendingData = await getRawLendingData();
-  var graphData = await fetchLendingGraphData();
-  res.send({ ...allLendingData, graphData });
+  // var graphData = await fetchLendingGraphData();
+  res.send({
+    ...allLendingData,
+    // graphData
+  });
 };
 
 export const getRawLendingData = async (): Promise<
   LendingDataProp | undefined
 > => {
-  let allLendingData: LendingDataProp | undefined = cache.get("allLendingData");
+  let allLendingData: LendingDataProp | undefined =
+    cache.get(cacheLendingDataKey);
+
   if (allLendingData == undefined) {
     allLendingData = await getCompoundV2Tvl(JOE_COMPTROLLER);
-    cache.set("allLendingData", allLendingData);
+    cache.set(cacheLendingDataKey, allLendingData, cacheLendingDataTTL);
   }
   return allLendingData;
 };

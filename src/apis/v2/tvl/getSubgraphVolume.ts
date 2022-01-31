@@ -1,5 +1,9 @@
 import { gql, request } from "graphql-request";
 import { cache } from "../../..";
+import {
+  cacheTvlLiquidityKey,
+  cacheTvlLiquidityTTL,
+} from "../../../utils/cacheConstants";
 import { TRADER_JOE_GRAPH_EXCHANGE } from "../../../utils/constants";
 
 export const getUniqStartOfTodayTimestamp = (date = new Date()) => {
@@ -26,7 +30,7 @@ export const getChainVolume = async (): Promise<{
 }> => {
   let allLiquidity:
     | { totalVolume: string; liquidityUSD: string; dailyVolume: string }
-    | undefined = cache.get("allLiquidity");
+    | undefined = cache.get(cacheTvlLiquidityKey);
   if (allLiquidity == null || allLiquidity == undefined) {
     const totalVolumeQuery = gql`
   factories {
@@ -64,7 +68,7 @@ export const getChainVolume = async (): Promise<{
         parseInt(graphRes?.["dayData"]?.["volumeUSD"] || "0").toFixed(2) ??
         undefined,
     };
-    cache.set("allLiquidity", allLiquidity);
+    cache.set(cacheTvlLiquidityKey, allLiquidity, cacheTvlLiquidityTTL);
   }
   return allLiquidity;
 };

@@ -8,10 +8,15 @@ import NodeCache from "node-cache";
 import { rt } from "./middleware/rt";
 import routerV1 from "./routerV1";
 import routerV2 from "./routerV2";
+import { updateCache } from "./utils/cacheService";
 
 const app = express();
 
-export const cache = new NodeCache();
+export const cache = new NodeCache({
+  stdTTL: 60 * 30,
+  checkperiod: 10,
+});
+updateCache(cache);
 
 app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: false }));

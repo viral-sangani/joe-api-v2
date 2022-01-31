@@ -5,6 +5,8 @@ const AVAX_RPC =
   process.env.AVAX_RPC || "https://api.avax.network/ext/bc/C/rpc";
 const TRADER_JOE_GRAPH_EXCHANGE =
   "https://api.thegraph.com/subgraphs/name/traderjoe-xyz/exchange";
+const TRADER_JOE_GRAPH_BAR =
+  "https://api.thegraph.com/subgraphs/name/traderjoe-xyz/bar";
 const TRADER_JOE_GRAPH_LENDING =
   "https://api.thegraph.com/subgraphs/name/traderjoe-xyz/lending";
 const TRADER_JOE_GRAPH_MASTERCHEF =
@@ -83,6 +85,7 @@ export {
   TRADER_JOE_GRAPH_EXCHANGE,
   TRADER_JOE_GRAPH_LENDING,
   TRADER_JOE_GRAPH_MASTERCHEF,
+  TRADER_JOE_GRAPH_BAR,
   GRAPH_BLOCKS_URI,
   MASTERCHEF_ADDRESS,
   secondsPerYear,

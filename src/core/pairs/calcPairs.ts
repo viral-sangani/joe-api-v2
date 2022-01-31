@@ -4,6 +4,7 @@ import { cache } from "../..";
 import getReserves from "../../abis/getReserves.json";
 import { multiCall } from "../../sdk";
 import { getOneDayBlock, getSevenDayBlock } from "../../utils/block";
+import { cacheSinglePairTTL } from "../../utils/cacheConstants";
 import { TRADER_JOE_GRAPH_EXCHANGE } from "../../utils/constants";
 import { pairsQuery, pairsTimeTravelQuery } from "./query";
 
@@ -163,7 +164,7 @@ export async function getAllPairsData(
         ? sevenDayFees
         : 0;
       pairAddressData.oneYearFeesAPR = oneYearFeesAPR;
-      cache.set(`pairs-${pairAddress}`, pairAddressData);
+      cache.set(`pairs-${pairAddress}`, pairAddressData, cacheSinglePairTTL);
       pairs.push(pairAddressData);
     }
   }

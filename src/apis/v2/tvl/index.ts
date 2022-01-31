@@ -18,7 +18,8 @@ export const getTvl = async (req: Request, res: Response) => {
   );
   const tokenPrice = await getTokenPrice(JOE_TOKEN);
 
-  let formattedPrice = await utils.formatUnits(BigNumber.from(tokenPrice), 18);
+  let formattedPrice = utils.formatUnits(BigNumber.from(tokenPrice), 18);
+
   // Handle Liquidity from The Graph
   const allLiquidity = await getChainVolume();
 

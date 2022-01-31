@@ -5,9 +5,13 @@ import token0Abi from "../../../abis/token0.json";
 import token1Abi from "../../../abis/token1.json";
 import { call, multiCall } from "../../../sdk";
 import { balanceOf } from "../../../sdk/balanceOf";
+import {
+  cacheStakingTvlKey,
+  cacheStakingTvlTTL,
+} from "../../../utils/cacheConstants";
 
 export async function staking(stakingContracts, stakingToken) {
-  let stakingTvl = cache.get("stakingTvl");
+  let stakingTvl = cache.get(cacheStakingTvlKey);
   if (stakingTvl == null || stakingTvl == undefined) {
     const bal = (
       await multiCall({
@@ -27,7 +31,7 @@ export async function staking(stakingContracts, stakingToken) {
     stakingTvl = {
       [address]: bal,
     };
-    cache.set("stakingTvl", stakingTvl);
+    cache.set(cacheStakingTvlKey, stakingTvl, cacheStakingTvlTTL);
   }
   return stakingTvl;
 }

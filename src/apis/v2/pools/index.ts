@@ -1,26 +1,30 @@
 import { Request, Response } from "express";
 import { cache } from "../../..";
 import { getPoolsData } from "../../../core/pool/graph";
+import {
+  cachePoolDataKey,
+  cachePoolDataTTL,
+} from "../../../utils/cacheConstants";
 import { Pools } from "../../../utils/types";
 import { getPoolHistories } from "./../../../core/pool/graph";
 
-const getCachedData = async () => {
-  let allPoolsData: Pools[] | undefined = cache.get("allPoolsData");
+export const getPoolCachedData = async () => {
+  let allPoolsData: Pools[] | undefined = cache.get(cachePoolDataKey);
   if (allPoolsData == undefined) {
     allPoolsData = await getPoolsData();
-    cache.set("allPoolsData", allPoolsData);
+    cache.set(cachePoolDataKey, allPoolsData, cachePoolDataTTL);
   }
   return allPoolsData;
 };
 
 export const getPools = async (req: Request, res: Response) => {
-  let allPoolsData = await getCachedData();
+  let allPoolsData = await getPoolCachedData();
   res.send(allPoolsData);
 };
 
 export const getSinglePool = async (req: Request, res: Response) => {
   try {
-    let allPoolsData = await getCachedData();
+    let allPoolsData = await getPoolCachedData();
     const { id } = req.params;
     if (allPoolsData != null) {
       let pool = allPoolsData.find((pool) => pool.id === id);
