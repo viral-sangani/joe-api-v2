@@ -1,3 +1,4 @@
+import { Request, Response } from "express";
 import { AbiItem } from "web3-utils";
 // import TotalSupplyAndBorrowABI from "../../../abis/TotalSupplyAndBorrowABI.json";
 import {
@@ -72,12 +73,22 @@ class Cache {
   }
 }
 
-export async function totalSupplyBankerJoe(ctx) {
-  ctx.body = (await cache.getTotalSupply()).toString();
+export async function totalSupplyBankerJoe(req: Request, res: Response) {
+  try {
+    let data = (await cache.getTotalSupply()).toString();
+    res.send(data);
+  } catch (e) {
+    res.send("Error");
+  }
 }
 
-export async function totalBorrow(ctx) {
-  ctx.body = (await cache.getTotalBorrow()).toString();
+export async function totalBorrow(req: Request, res: Response) {
+  try {
+    let data = (await cache.getTotalBorrow()).toString();
+    res.send(data);
+  } catch (e) {
+    res.send("Error");
+  }
 }
 
 const cache = new Cache();
