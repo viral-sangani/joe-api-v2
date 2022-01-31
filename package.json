@@ -34,7 +34,9 @@
     "requery": "^0.0.5",
     "underscore": "^1.13.2",
     "nodemon": "^2.0.15",
-    "web3": "^1.6.1"
+    "web3": "^1.6.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
@@ -42,8 +44,6 @@
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
     "eslint": "^8.6.0",
-    "rimraf": "^3.0.2",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.5.4"
+    "rimraf": "^3.0.2"
   }
 }
