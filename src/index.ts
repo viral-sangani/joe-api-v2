@@ -4,12 +4,20 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
+import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import NodeCache from "node-cache";
 import { rt } from "./middleware/rt";
 import routerV1 from "./routerV1";
 import routerV2 from "./routerV2";
 import { updateCache } from "./utils/cacheService";
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 1000, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
 
 dotenv.config();
 
@@ -32,6 +40,7 @@ updateCache(cache);
 
 // Middleware
 app.use(helmet());
+app.use(limiter);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
